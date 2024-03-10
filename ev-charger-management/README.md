@@ -4,7 +4,7 @@ This web application serves as a platform to display a list of electric vehicle 
 
 The app can be run by using Docker.
 
-The API is written in Laravel and has several endpoints, but a more thorough explanation of the API using Swagger can be found [here](http://localhost:8000/api/documentation).
+The API is written in Laravel and has several endpoints, but a more thorough explanation of the API using Swagger can be found upon dockerizing [here](http://localhost:8000/api/documentation).
 
 The front-end has been written in React where the user can see a list of charging stations along with their map location on Google Maps.
 
