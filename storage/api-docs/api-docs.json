@@ -1,0 +1,502 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Company API",
+        "description": "API documentation for Company operations",
+        "contact": {
+            "name": "Swagger API Team"
+        },
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "https://example.localhost",
+            "description": "API server"
+        },
+        {
+            "url": "https://example.localhost",
+            "description": "API server"
+        }
+    ],
+    "paths": {
+        "/api/companies": {
+            "get": {
+                "tags": [
+                    "Company"
+                ],
+                "summary": "Get all companies",
+                "description": "Get all companies.",
+                "operationId": "54f966c056050f9db4fff6ee5a45a76a",
+                "responses": {
+                    "200": {
+                        "description": "List of companies",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "description": "Company ID",
+                                                "type": "integer"
+                                            },
+                                            "parent_company_id": {
+                                                "description": "Parent Company ID",
+                                                "type": "integer"
+                                            },
+                                            "name": {
+                                                "description": "Company name",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Company"
+                ],
+                "summary": "Create a new company",
+                "description": "Create a new company.",
+                "operationId": "00e2db7b0f71c32b377f4dfc4dd685a8",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "description": "Company ID",
+                                        "type": "integer"
+                                    },
+                                    "parent_company_id": {
+                                        "description": "Parent Company ID",
+                                        "type": "integer"
+                                    },
+                                    "name": {
+                                        "description": "Company name",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Company created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "description": "Company ID",
+                                            "type": "integer"
+                                        },
+                                        "parent_company_id": {
+                                            "description": "Parent Company ID",
+                                            "type": "integer"
+                                        },
+                                        "name": {
+                                            "description": "Company name",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/companies/{id}": {
+            "get": {
+                "tags": [
+                    "Company"
+                ],
+                "summary": "Get a specific company",
+                "description": "Get a specific company by ID.",
+                "operationId": "01c261c039e4b27beeb888ef46bd86db",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Company ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Company data",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "description": "Company ID",
+                                            "type": "integer"
+                                        },
+                                        "parent_company_id": {
+                                            "description": "Parent Company ID",
+                                            "type": "integer"
+                                        },
+                                        "name": {
+                                            "description": "Company name",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Company not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Company"
+                ],
+                "summary": "Update a company",
+                "description": "Update a company by ID.",
+                "operationId": "6a1d7a4a2b9cbdfe7749cef78e6cec57",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Company ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "description": "Company ID",
+                                        "type": "integer"
+                                    },
+                                    "parent_company_id": {
+                                        "description": "Parent Company ID",
+                                        "type": "integer"
+                                    },
+                                    "name": {
+                                        "description": "Company name",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Company updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "description": "Company ID",
+                                            "type": "integer"
+                                        },
+                                        "parent_company_id": {
+                                            "description": "Parent Company ID",
+                                            "type": "integer"
+                                        },
+                                        "name": {
+                                            "description": "Company name",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Company not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Company"
+                ],
+                "summary": "Delete a company",
+                "description": "Delete a company by ID.",
+                "operationId": "49d767f608bffc95ad39368bf1766693",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Company ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Company deleted"
+                    },
+                    "404": {
+                        "description": "Company not found"
+                    }
+                }
+            }
+        },
+        "/api/stations": {
+            "get": {
+                "tags": [
+                    "Station"
+                ],
+                "summary": "Get all stations",
+                "description": "Get all stations.",
+                "operationId": "4720e59d102825141a63cf3349253ea0",
+                "responses": {
+                    "200": {
+                        "description": "List of stations"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Station"
+                ],
+                "summary": "Create a new station",
+                "description": "Create a new station.",
+                "operationId": "f64cd740423f20d1b8fb367b4e6d0ec2",
+                "responses": {
+                    "201": {
+                        "description": "Station created"
+                    }
+                }
+            }
+        },
+        "/api/stations/{id}": {
+            "get": {
+                "tags": [
+                    "Station"
+                ],
+                "summary": "Get a specific station",
+                "description": "Get a specific station by ID.",
+                "operationId": "368911e17e985f1cf255154b55ec5c20",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Station ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Station data"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Station"
+                ],
+                "summary": "Update a station",
+                "description": "Update a station by ID.",
+                "operationId": "bd5d2d62515bf9fb50645576008ccc94",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Station ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Station updated"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Station"
+                ],
+                "summary": "Delete a station",
+                "description": "Delete a station by ID.",
+                "operationId": "ae4854e3e831ada274aad1d97f5347ef",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Station ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Station deleted"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/api/stations/within-radius": {
+            "post": {
+                "tags": [
+                    "Station"
+                ],
+                "summary": "Get stations within a specified radius",
+                "description": "Get stations within a specified radius.",
+                "operationId": "df1e3b4c4e670bf34a56e769b6710f93",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "latitude": {
+                                        "description": "Latitude of the center point",
+                                        "type": "number"
+                                    },
+                                    "longitude": {
+                                        "description": "Longitude of the center point",
+                                        "type": "number"
+                                    },
+                                    "radius": {
+                                        "description": "Radius in kilometers",
+                                        "type": "number"
+                                    },
+                                    "company_id": {
+                                        "description": "ID of the company",
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Stations within the specified radius"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Company": {
+                "properties": {
+                    "id": {
+                        "description": "Company ID",
+                        "type": "integer"
+                    },
+                    "parent_company_id": {
+                        "description": "Parent Company ID",
+                        "type": "integer"
+                    },
+                    "name": {
+                        "description": "Company name",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "CompanyResponse": {
+                "properties": {
+                    "id": {
+                        "description": "Company ID",
+                        "type": "integer"
+                    },
+                    "parent_company_id": {
+                        "description": "Parent Company ID",
+                        "type": "integer"
+                    },
+                    "name": {
+                        "description": "Company name",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "responses": {
+            "404": {
+                "description": "Company not found"
+            }
+        },
+        "requestBodies": {
+            "CompanyRequest": {
+                "required": true,
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "properties": {
+                                "id": {
+                                    "description": "Company ID",
+                                    "type": "integer"
+                                },
+                                "parent_company_id": {
+                                    "description": "Parent Company ID",
+                                    "type": "integer"
+                                },
+                                "name": {
+                                    "description": "Company name",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Company",
+            "description": "Endpoints related to companies"
+        },
+        {
+            "name": "Station",
+            "description": "Endpoints related to stations"
+        }
+    ]
+}
