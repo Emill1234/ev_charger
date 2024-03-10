@@ -1,46 +1,15 @@
-# Getting Started with Create React App
+**EV Charging Stations Web App**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This web application serves as a platform to display a list of electric vehicle charging stations and visualized on a Google Map. Users can easily view the locations of various charging stations and their details.
 
-## Available Scripts
+The app can be run by using Docker.
 
-In the project directory, you can run:
+The API is written in Laravel and has several endpoints, but a more thorough explanation of the API using Swagger can be found upon dockerizing [here](http://localhost:8000/api/documentation).
 
-### `npm start`
+The front-end has been written in React where the user can see a list of charging stations along with their map location on Google Maps.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+A nodejs script has also been implemented and can be manually run from within the "ev-charger-node" folder by running the following command upon dockerizing: `docker exec -it ev-charger-management-nodejs-1 node nodeapp.js`.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The web app is connected to a MySQL database which can be recreated in 2 ways, either by using the `ev_charger.sql` file in the main project folder or by using the Laravel migrations available in the `database/migrations` folder. The first option will also populate the database with some mock data.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Bloopers: I've been wondering why the Google Map was showing a pinpoint in Kyrgyzstan among the US ones, only to find out it wasn't a bug, just a longitude value without the minus before the value. Awesome stuff.
