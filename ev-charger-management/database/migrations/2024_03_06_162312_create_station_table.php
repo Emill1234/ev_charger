@@ -17,6 +17,8 @@ class CreateStationTable extends Migration
             $table->foreign('company_id')->references('id')->on('company')->onDelete('cascade');
             $table->string('address');
             $table->timestamps();
+
+            $table->index(['latitude', 'longitude']);
         });
     }
 

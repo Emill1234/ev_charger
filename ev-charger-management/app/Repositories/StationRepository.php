@@ -59,10 +59,11 @@ class StationRepository
         $groupedStations = $stations->groupBy(['latitude', 'longitude']);
 
         // Transform grouped stations to array for a readable JSON response
-        $groupedStationsArray = [];
-        foreach ($groupedStations as $key => $group) {
-            $groupedStationsArray["$key"] = $group->toArray();
-        }
+        $groupedStationsArray = $groupedStations->map(function ($group) {
+            return $group->toArray();
+        });
+
+        $groupedStationsArray = $groupedStationsArray->toArray();    
 
         return $groupedStationsArray;
     }
