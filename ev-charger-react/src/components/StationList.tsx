@@ -21,13 +21,20 @@ const libraries: ("places")[] = ['places'];
 
 const StationList: React.FC = () => {
   const [stations, setStations] = useState<Station[]>([]);
-  const [map, setMap] = useState<google.maps.Map | null>(null);
   const [center, setCenter] = useState<{ lat: number, lng: number }>({ lat: 0, lng: 0 });
   const mapRef = useRef<google.maps.Map | null>(null);
 
   useEffect(() => {
     axios.get('/api/stations')
-      .then((response) => setStations(response.data))
+      .then((response) => {
+        setStations(response.data);
+        if (response.data.length > 0) {
+          setCenter({
+            lat: response.data[0].latitude,
+            lng: response.data[0].longitude
+          });
+        }
+      })
       .catch((error) => console.error('Error fetching data:', error));
   }, []);
 
@@ -69,24 +76,22 @@ const StationList: React.FC = () => {
         googleMapsApiKey="AIzaSyAdL9i_7V8mG6q8_KWa4-iVKKdDEH3RyCY"
         libraries={libraries}
       >
-        <GoogleMap
-          mapContainerStyle={mapContainerStyle}
-          center={center}
-          zoom={10}
-          onLoad={(map) => {
-            setMap(map);
-            mapRef.current = map;
-          }}
-          options={{ zoomControl: true }}
-        >
-
-          {stations.map((station) => (
-            <Marker
-              key={station.id}
-              position={{ lat: station.latitude, lng: station.longitude }}
-              title={station.name}
-            />
-          ))}
+      <GoogleMap
+        mapContainerStyle={mapContainerStyle}
+        center={center}
+        zoom={10}
+        onLoad={(map) => {
+          mapRef.current = map; 
+        }}
+        options={{ zoomControl: true }}
+      >
+      {stations.map((station) => (
+        <Marker
+          key={station.id}
+          position={{ lat: station.latitude, lng: station.longitude }}
+          title={station.name}
+        />
+      ))}
         </GoogleMap>
       </LoadScript>
     </div>
