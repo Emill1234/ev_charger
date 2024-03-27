@@ -27,7 +27,7 @@ class Company extends Model
         return $this->hasMany(Company::class, 'parent_company_id');
     }
 
-    public function descendantsAndSelf($parentId)
+    public static function descendantsAndSelf($parentId)
     {
         $parentCompany = Company::find($parentId);
 
@@ -50,6 +50,30 @@ class Company extends Model
         $fetchDescendants($parentCompany);
 
         return $descendantsAndSelf->unique();
+    }
+
+    public static function descendantsAndSelfWithCTE($parentId)
+    {
+        $cteQuery = "
+            WITH RECURSIVE company_hierarchy AS (
+                SELECT id
+                FROM company
+                WHERE id = ?
+                UNION ALL
+                SELECT c.id
+                FROM company c
+                INNER JOIN company_hierarchy ch ON ch.id = c.parent_company_id
+            )
+            SELECT id FROM company_hierarchy;
+        ";
+
+        $descendantsIds = \DB::select($cteQuery, [$parentId]);
+
+        $descendantsAndSelfIds = array_map(function ($descendant) {
+            return $descendant->id;
+        }, $descendantsIds);
+
+        return collect($descendantsAndSelfIds);
     }
 
 }

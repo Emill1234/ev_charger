@@ -36,8 +36,6 @@ class CompanyRepository
 
     public function getChildCompanyIds($parentId)
     {
-        $company = new Company();
-
-        return $company->descendantsAndSelf($parentId);
+        return Company::descendantsAndSelfWithCTE($parentId);
     }
 }
