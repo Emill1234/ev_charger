@@ -73,7 +73,7 @@ const StationList: React.FC = () => {
         </table>
       </div>
       <LoadScript
-        googleMapsApiKey="AIzaSyAdL9i_7V8mG6q8_KWa4-iVKKdDEH3RyCY"
+        googleMapsApiKey=""
         libraries={libraries}
       >
       <GoogleMap
